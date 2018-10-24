@@ -22,7 +22,7 @@ services:
       - ./crypto-config/ordererOrganizations/example.com/orderers/orderer3.example.com/msp:/var/hyperledger/orderer/msp
       - ./crypto-config/ordererOrganizations/example.com/orderers/orderer3.example.com/tls:/var/hyperledger/orderer/tls
     ports:
-      - 9050:7050
+      - 8031:7050
 #    extra_hosts:
 #      - "kafka1:120.92.113.219"
 #      - "kafka2:120.92.113.219"

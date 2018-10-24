@@ -13,23 +13,24 @@ services:
     container_name: peer0.org2.example.com
     environment:
       - CORE_PEER_ID=peer0.org2.example.com
-      - CORE_PEER_ADDRESS=172.31.0.38:9051
-      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=172.31.0.38:9051
-      - CORE_PEER_GOSSIP_BOOTSTRAP=172.31.0.38:10051
+      - CORE_PEER_ADDRESS=52.77.4.118:8022
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=52.77.4.118:8022
+      - CORE_PEER_GOSSIP_BOOTSTRAP=52.77.4.118:8024
       - CORE_PEER_CHAINCODELISTENADDRESS=peer0.org2.example.com:7052
       - CORE_PEER_LOCALMSPID=Org2MSP
     volumes:
       - /var/run/:/host/var/run/
       - ./crypto-config/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/msp:/etc/hyperledger/fabric/msp
       - ./crypto-config/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls:/etc/hyperledger/fabric/tls
+      - ~/peer0.org2.example.com:/var/hyperledger/production/ledgersData/chains/chains/mychannel
     ports:
-      - 9051:7051
-      - 9052:7052
-      - 9053:7053
+      - 8022:7051
+      - 8026:7052
+      - 8023:7053
     extra_hosts:
-      - "orderer1.example.com:172.31.0.36"
-      - "orderer2.example.com:172.31.0.36"
-      - "orderer3.example.com:172.31.0.36"
+      - "orderer1.example.com:18.179.212.4"
+      - "orderer2.example.com:18.179.212.4"
+      - "orderer3.example.com:18.179.212.4"
 
   peer1.org2.example.com:
     extends:
@@ -38,20 +39,21 @@ services:
     container_name: peer1.org2.example.com
     environment:
       - CORE_PEER_ID=peer1.org2.example.com
-      - CORE_PEER_ADDRESS=172.31.0.38:10051
-      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=172.31.0.38:10051
-      - CORE_PEER_GOSSIP_BOOTSTRAP=172.31.0.38:9051
+      - CORE_PEER_ADDRESS=52.77.4.118:8024
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=52.77.4.118:8024
+      - CORE_PEER_GOSSIP_BOOTSTRAP=52.77.4.118:8022
       - CORE_PEER_CHAINCODELISTENADDRESS=peer1.org2.example.com:7052
       - CORE_PEER_LOCALMSPID=Org2MSP
     volumes:
       - /var/run/:/host/var/run/
       - ./crypto-config/peerOrganizations/org2.example.com/peers/peer1.org2.example.com/msp:/etc/hyperledger/fabric/msp
       - ./crypto-config/peerOrganizations/org2.example.com/peers/peer1.org2.example.com/tls:/etc/hyperledger/fabric/tls
+      - ~/peer1.org2.example.com:/var/hyperledger/production/ledgersData/chains/chains/mychannel
     ports:
-      - 10051:7051
-      - 10052:7052
-      - 10053:7053
+      - 8024:7051
+      - 8027:7052
+      - 8025:7053
     extra_hosts:
-      - "orderer1.example.com:172.31.0.36"
-      - "orderer2.example.com:172.31.0.36"
-      - "orderer3.example.com:172.31.0.36"
+      - "orderer1.example.com:18.179.212.4"
+      - "orderer2.example.com:18.179.212.4"
+      - "orderer3.example.com:18.179.212.4"
